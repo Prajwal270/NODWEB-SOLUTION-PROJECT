@@ -7,7 +7,7 @@ function MainLayout() {
   return (
     <div>
       <Navbar />
-      <div className="px-4 sm:px-6 lg:px-16 py-5">
+      <div>
         <Outlet />
       </div>
       <Footer />

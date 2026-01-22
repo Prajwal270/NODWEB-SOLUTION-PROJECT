@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/nodweb_logo.webp";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,20 +23,31 @@ function Navbar() {
     },
   };
 
-  // Tailwind class helper for active links
   const getLinkClass = ({ isActive }) =>
-    `relative block font-semibold
-     ${isActive ? "text-blue-500" : "text-gray-300 hover:text-blue-600"}
-     after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:bg-blue-500
-     after:w-0 after:transition-all after:duration-300
-     hover:after:w-full`;
+    `relative block font-semibold transition-colors duration-300
+   ${isActive ? "text-blue-500" : "text-gray-300 hover:text-white"}
+   after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-blue-500
+   after:w-full after:scale-x-0 after:origin-left
+   after:transition-transform after:duration-300
+   hover:after:scale-x-100`;
 
   return (
-    <nav className="bg-[#0B0F19]/90 shadow-md sticky top-0 z-50 text-gray-300 backdrop-blur-md">
+    <nav className="bg-[#0B0F19] shadow-md sticky top-0 z-50 text-gray-300 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
-          <div className="shrink-0 font-bold text-xl">NodWeb</div>
+          <a href="/">
+            <div className="flex items-center gap-1">
+              <img
+                src={logo}
+                alt=""
+                className="h-8 w-8 md:h-10 md:w-10 rounded-full"
+              />
+              <div className="shrink-0 font-semibold text-xl sm:text-2xl md:text-32xl tracking-wide text-white gilda-display-regular">
+                Nod<span className="font-light">Web</span>
+              </div>
+            </div>
+          </a>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
@@ -54,10 +66,14 @@ function Navbar() {
             <NavLink to="/contact" className={getLinkClass}>
               Contact
             </NavLink>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-              Get Started
-            </button>
           </div>
+          <button
+            className="group hidden md:flex items-center gap-1 justify-center bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm font-medium
+                   transition-all duration-300 hover:bg-blue-700 hover:shadow-md active:scale-95 hover:cursor-pointer"
+          >
+            Get Started
+            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+          </button>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden z-50">
@@ -82,7 +98,7 @@ function Navbar() {
             variants={menuVariants}
             className="md:hidden fixed inset-0 flex justify-center items-start pt-20 z-40"
           >
-            <div className="bg-[#0B0F19]/95 backdrop-blur-lg shadow-lg rounded-xl w-[90vw] max-w-sm p-6 space-y-3 text-center relative">
+            <div className="flex flex-col gap-2 items-center bg-[#0B0F19] shadow-lg rounded-xl w-[90vw] border border-blue-600/20 max-w-sm p-6 space-y-3 text-center relative">
               <NavLink
                 to="/"
                 onClick={() => setIsMenuOpen(false)}
@@ -118,8 +134,12 @@ function Navbar() {
               >
                 Contact
               </NavLink>
-              <button className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-2">
+              <button
+                className="group w-full flex items-center gap-1 justify-center bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm font-medium
+                   transition-all duration-300 hover:bg-blue-700 hover:shadow-md active:scale-95"
+              >
                 Get Started
+                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>
           </motion.div>
