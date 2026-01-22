@@ -8,6 +8,7 @@
 body {
     @apply font-sans;
 }
+<<<<<<< HEAD
 
 .gilda-display-regular {
     font-family: "Gilda Display", serif;
@@ -15,3 +16,5 @@ body {
     font-style: normal;
   }
   
+=======
+>>>>>>> b91dcbb67bda502469e45bc9606301e1422f1a9f
