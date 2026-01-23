@@ -18,7 +18,7 @@ export default function Branding() {
 
       <div className="w-full md:w-1/2 max-w-md mb-10 md:mb-0">
         <iframe
-          src="https://lottie.host/embed/ce2bc074-4506-498a-932b-ac14b33b5848/oc6IaSHkct.lottie"
+          src="https://lottie.host/embed/34f6b979-d43b-4b6e-8b20-17b5ea995b58/ZcbLh6AWlW.lottie"
           className="w-full h-64 sm:h-90 md:h-140"
           frameBorder="0"
           allowFullScreen
