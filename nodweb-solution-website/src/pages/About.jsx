@@ -1,10 +1,23 @@
 import React, {Suspense, lazy} from "react";
+import Loader from "../components/Loader";
+
+const Objective = lazy(() => import("../section-about/Objective"))
+const WhoWeAre = lazy(() => import("../section-about/WhoWeAre"))
+const OurMission = lazy(() => import("../section-about/OurMission"))
+const OurVision = lazy(() => import("../section-about/OurVision"))
+const CoreValues = lazy(() => import("../section-about/CoreValues"))
+const WhyChooseNodWeb = lazy(() => import("../section-about/WhyChooseNodWeb"))
 
 function About() {
   return (
-    <div>
-      <h1>About Page</h1>
-    </div>
+    <Suspense fallback={<Loader/>}>
+      <Objective/>
+      <WhoWeAre/>
+      <OurMission/>
+      <OurVision/>
+      <CoreValues/>
+      <WhyChooseNodWeb/>
+    </Suspense>
   );
 }
 
