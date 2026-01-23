@@ -10,7 +10,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "../assets/nodweb_logo.webp"; // your logo
+import logo from "../assets/nodweb_logo.webp"; 
 
 const footerVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -115,19 +115,19 @@ const Footer = () => {
 
                 <div className="flex items-center justify-between">
                   <a href="#">
-                    <LinkedinIcon className="h-10 w-10 hover:bg-gray-700/20 transition-all p-2 rounded" />
+                    <LinkedinIcon className="h-10 w-10 hover:bg-blue-700/20 transition-all p-2 rounded" />
                   </a>
                   <a href="#">
-                    <Twitter className="h-10 w-10 hover:bg-gray-700/20 transition-all p-2 rounded" />
+                    <Twitter className="h-10 w-10 hover:bg-blue-700/20 transition-all p-2 rounded" />
                   </a>
                   <a href="#">
-                    <Instagram className="h-10 w-10 hover:bg-gray-700/20 transition-all p-2 rounded" />
+                    <Instagram className="h-10 w-10 hover:bg-blue-700/20 transition-all p-2 rounded" />
                   </a>
                   <a href="#">
-                    <Facebook className="h-10 w-10 hover:bg-gray-700/20 transition-all p-2 rounded" />
+                    <Facebook className="h-10 w-10 hover:bg-blue-700/20 transition-all p-2 rounded" />
                   </a>
                   <a href="#">
-                    <MessageCircle className="h-10 w-10 hover:bg-gray-700/20 transition-all p-2 rounded" />
+                    <MessageCircle className="h-10 w-10 hover:bg-blue-700/20 transition-all p-2 rounded" />
                   </a>
                 </div>
               </ul>

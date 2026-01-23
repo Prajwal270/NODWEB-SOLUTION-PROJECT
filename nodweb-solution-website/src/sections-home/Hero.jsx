@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -32,14 +33,14 @@ function Hero() {
         </motion.div>
 
         <div className="mt-20 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="group flex items-center justify-center border border-gray-300 text-white px-4 py-2 rounded-lg text-md font-medium transition-all duration-300 hover:bg-gray-700/30 hover:shadow-md active:scale-95">
+          <Link to="/contact" className="group flex items-center justify-center border border-blue-600 text-white px-4 py-2 rounded-lg text-md font-medium transition-all duration-300 bg-blue-800/10 hover:bg-blue-600 hover:shadow-md active:scale-95">
             Contact Us
-          </button>
+          </Link>
 
-          <button className="group flex items-center gap-1 justify-center border border-blue-600 bg-blue-600 text-white px-4 py-2 rounded-lg text-md font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md active:scale-95">
+          <Link to="#" className="group flex items-center gap-1 justify-center border border-blue-600 bg-blue-600 text-white px-4 py-2 rounded-lg text-md font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md active:scale-95">
             Get Started
             <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
+          </Link>
         </div>
 
       </div>
