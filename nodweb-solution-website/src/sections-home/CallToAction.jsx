@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function CallToAction() {
   return (
-    <section className="w-full py-24 relative overflow-hidden bg-[#0B0F19]">
+    <section className="w-full py-24 relative overflow-hidden bg-[#0B0F19] text-amber-100">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-size-[40px_40px]" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
         <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">

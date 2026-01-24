@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 function Hero() {
   return (
-    <section className="relative pt-22 pb-24 sm:pt-20 sm:pb-30 flex items-center justify-center overflow-hidden bg-[#05070F] text-white">
+    <section className="relative pt-22 pb-24 sm:pt-20 sm:pb-30 flex items-center justify-center overflow-hidden bg-[#05070F] text-amber-100">
       {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-size-[40px_40px]" />
+      {/* <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-size-[40px_40px]" /> */}
 
       {/* Glow */}
       <div className="absolute -top-50 left-1/2 -translate-x-1/2 w-150 h-150 bg-blue-500/10 blur-[120px] rounded-full" />
@@ -23,7 +23,7 @@ function Hero() {
             Transforming Ideas Into Reality
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold leading-tight my-5">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold leading-tight my-5 ">
             Building Digital Solutions for the Future
           </h1>
 
