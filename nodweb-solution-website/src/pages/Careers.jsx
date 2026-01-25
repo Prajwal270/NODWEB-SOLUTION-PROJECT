@@ -14,6 +14,7 @@ const VALUES = [
 
 // Animation variants
 const cardVariants = { hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' } } }
+const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.14, delayChildren: 0.08 } } }
 
 // FUTURE JOB TEMPLATE (add new entries to the JOBS array):
 // { title: 'Job Title', type: 'Full-time', location: 'Remote', summary: 'One-line role summary' },
@@ -83,8 +84,7 @@ export default function Careers() {
 					<h2 className="text-2xl font-semibold">Why Work With Us</h2>
 					<p className="text-gray-400 mt-2">A collaborative, learning-first culture focused on impact, growth, and balance.</p>
 				</div>
-
-				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				<motion.div {...(reduceMotion ? {} : { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.12 }, variants: containerVariants })} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{VALUES.map((v) => {
 						const motionProps = (reduceMotion || isSmall) ? {} : { variants: cardVariants, whileHover: { y: -6, scale: 1.02 }, transition: { type: 'spring', stiffness: 300, damping: 20 } }
 						return (
@@ -101,7 +101,7 @@ export default function Careers() {
 							</motion.div>
 						)
 					})}
-				</div>
+				</motion.div>
 			</section>
 
 			{/* Current Openings */}
@@ -113,8 +113,7 @@ export default function Careers() {
 					</div>
 					<a href="mailto:nodwebsolutionpvtltd@gmail.com" className="text-indigo-400 hover:underline">Send general resume</a>
 				</div>
-
-				<div className="grid gap-4 md:grid-cols-2">
+				<motion.div {...(reduceMotion ? {} : { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.12 }, variants: containerVariants })} className="grid gap-4 md:grid-cols-2">
 					{JOBS.map((job) => {
 						const motionProps = (reduceMotion || isSmall) ? {} : { variants: cardVariants, whileHover: { y: -6, scale: 1.01 }, transition: { duration: 0.18 } }
 						return (
@@ -143,12 +142,12 @@ export default function Careers() {
 							<div className="mt-2 text-sm">Check back later or send your resume to <a href="mailto:nodwebsolutionpvtltd@gmail.com" className="text-indigo-400">nodwebsolutionpvtltd@gmail.com</a></div>
 						</div>
 					</motion.div>
-				</div>
+				</motion.div>
 			</section>
 
 			{/* Internship & Freshers Opportunities */}
 			<section className="max-w-6xl mx-auto px-6 py-12">
-				<motion.div whileHover={{ y: -4 }} transition={{ duration: 0.18 }} className="bg-[rgba(255,255,255,0.02)] p-6 rounded-lg">
+				<motion.div {...(reduceMotion ? {} : { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.12 }, variants: containerVariants })} whileHover={{ y: -4 }} transition={{ duration: 0.18 }} className="bg-[rgba(255,255,255,0.02)] p-6 rounded-lg">
 					<div className="grid md:grid-cols-2 gap-6 items-center">
 						<div>
 							<h2 className="text-2xl font-semibold">Internship & Fresher Opportunities</h2>
@@ -169,12 +168,13 @@ export default function Careers() {
 
 			{/* Simple Application Form */}
 			<section className="max-w-4xl mx-auto px-6 py-12">
-				<div className="text-center mb-4">
+				<motion.div {...(reduceMotion ? {} : { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.12 }, variants: containerVariants })}>
+					<div className="text-center mb-4">
 					<h2 className="text-2xl font-semibold">Apply — quick form</h2>
 					<p className="text-gray-400 mt-2">Short form to send your interest — keep it simple and we’ll follow up.</p>
-				</div>
+					</div>
 
-				<form id="apply-form" onSubmit={handleApply} className="grid gap-3 bg-[rgba(255,255,255,0.02)] p-6 rounded-lg">
+					<form id="apply-form" onSubmit={handleApply} className="grid gap-3 bg-[rgba(255,255,255,0.02)] p-6 rounded-lg">
 					<label className="block">
 						<span className="sr-only">Full name</span>
 						<input name="name" placeholder="Full name" required className="w-full px-3 py-3 rounded bg-transparent border border-gray-700" />
@@ -208,7 +208,8 @@ export default function Careers() {
 						<a href="mailto:nodwebsolutionpvtltd@gmail.com" className="text-sm text-gray-300 text-center md:text-left">Or email nodwebsolutionpvtltd@gmail.com</a>
 					</div>
 				</form>
-			</section>
+				</motion.div>
+				</section>
 
 			<section className="py-12" />
 		</main>

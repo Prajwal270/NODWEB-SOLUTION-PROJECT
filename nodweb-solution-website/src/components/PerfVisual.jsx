@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function PerfVisual() {
+function PerfVisual() {
   return (
     <svg className="perf-ring w-full h-auto" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
       <defs>
@@ -91,3 +91,5 @@ export default function PerfVisual() {
     </svg>
   )
 }
+
+export default React.memo(PerfVisual)

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail } from 'lucide-react'
 
-export default function Contact() {
+function Contact() {
   const WHATSAPP_NUMBER = '917841061453' // international format without +
   const EMAIL_ADDRESS = 'nodwebsolutionpvtltd@gmail.com'
   const mapRef = React.useRef(null)
@@ -43,7 +43,7 @@ export default function Contact() {
     return () => obs.disconnect()
   }, [])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = React.useCallback((e) => {
     e.preventDefault()
     const form = e.target
     const name = form.fullName.value || ''
@@ -55,7 +55,7 @@ export default function Contact() {
     const encoded = encodeURIComponent(bodyText)
     // Open WhatsApp chat to the provided number with the form content
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank')
-  }
+  }, [WHATSAPP_NUMBER])
 
   return (
     <main className="bg-[#0B0F19] text-white min-h-screen">
@@ -213,3 +213,5 @@ export default function Contact() {
     </main>
   )
 }
+
+export default React.memo(Contact)
