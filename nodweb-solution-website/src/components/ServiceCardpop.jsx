@@ -53,7 +53,7 @@ function ServiceCard({ icon: Icon, title, description, benefits = [], details = 
             <motion.div onClick={(e) => e.stopPropagation()} initial={{ y: 12, scale: 0.98 }} animate={{ y: 0, scale: 1 }} exit={{ y: 12, scale: 0.98 }} transition={{ duration: 0.18 }} className="relative max-w-3xl w-full bg-[#0B0F19] border border-[#111827] rounded-2xl p-6 mx-4">
               <div className="flex items-start justify-between mb-4">
                 <h3 id={`modal-${title}`} className="text-lg font-semibold text-white">{(modal && modal.title) || title}</h3>
-                <button onClick={() => setOpen(false)} aria-label="Close" className="text-gray-400 ml-3">Close</button>
+                <button onClick={() => setOpen(false)} aria-label="Close" className="text-white ml-3 bg-transparent" style={{color: '#fff'}}>Close</button>
               </div>
 
               <div className="max-h-[80vh] overflow-y-auto pr-2 space-y-4">
@@ -144,7 +144,7 @@ function ServiceCard({ icon: Icon, title, description, benefits = [], details = 
                 </div>
                 <div className="flex items-center gap-3">
                   <Link to="/contact" onClick={() => setOpen(false)} className="inline-block bg-[#2563EB] text-white px-4 py-2 rounded-md text-sm font-medium">Contact Us</Link>
-                  <button onClick={() => setOpen(false)} className="border border-[#374151] text-[#9CA3AF] px-4 py-2 rounded-md text-sm font-medium">Close</button>
+                  <button onClick={() => setOpen(false)} className="border border-[#374151] text-white px-4 py-2 rounded-md text-sm font-medium bg-transparent" style={{color: '#fff'}}>Close</button>
                 </div>
               </div>
             </motion.div>
