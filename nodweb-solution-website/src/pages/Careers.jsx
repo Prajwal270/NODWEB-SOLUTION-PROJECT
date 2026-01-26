@@ -25,7 +25,7 @@ const JOBS = [
 
 export default function Careers() {
 	const reduceMotion = useReducedMotion()
-	const [isSmall, setIsSmall] = useState(false)
+	const [isSmall, setIsSmall] = useState(() => (typeof window !== 'undefined' ? window.innerWidth < 768 : false))
 
 	useEffect(() => {
 		function update() {
@@ -68,7 +68,7 @@ export default function Careers() {
 	}, [])
 
 	return (
-		<main className="bg-black text-white min-h-screen">
+		<main className="bg-[#111827] text-white min-h-screen">
 			{/* Hero */}
 			<section className="pt-12 md:pt-20 pb-8">
 				<div className="max-w-6xl mx-auto px-6 text-center">
@@ -84,7 +84,7 @@ export default function Careers() {
 					<h2 className="text-2xl font-semibold">Why Work With Us</h2>
 					<p className="text-gray-400 mt-2">A collaborative, learning-first culture focused on impact, growth, and balance.</p>
 				</div>
-				<motion.div {...(reduceMotion ? {} : { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.12 }, variants: containerVariants })} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				<motion.div {...(reduceMotion || isSmall ? {} : { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.12 }, variants: containerVariants })} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{VALUES.map((v) => {
 						const motionProps = (reduceMotion || isSmall) ? {} : { variants: cardVariants, whileHover: { y: -6, scale: 1.02 }, transition: { type: 'spring', stiffness: 300, damping: 20 } }
 						return (
@@ -113,7 +113,7 @@ export default function Careers() {
 					</div>
 					<a href="mailto:nodwebsolutionpvtltd@gmail.com" className="text-indigo-400 hover:underline">Send general resume</a>
 				</div>
-				<motion.div {...(reduceMotion ? {} : { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.12 }, variants: containerVariants })} className="grid gap-4 md:grid-cols-2">
+				<motion.div {...(reduceMotion || isSmall ? {} : { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.12 }, variants: containerVariants })} className="grid gap-4 md:grid-cols-2">
 					{JOBS.map((job) => {
 						const motionProps = (reduceMotion || isSmall) ? {} : { variants: cardVariants, whileHover: { y: -6, scale: 1.01 }, transition: { duration: 0.18 } }
 						return (
@@ -147,7 +147,7 @@ export default function Careers() {
 
 			{/* Internship & Freshers Opportunities */}
 			<section className="max-w-6xl mx-auto px-6 py-12">
-				<motion.div {...(reduceMotion ? {} : { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.12 }, variants: containerVariants })} whileHover={{ y: -4 }} transition={{ duration: 0.18 }} className="bg-[rgba(255,255,255,0.02)] p-6 rounded-lg">
+				<motion.div {...(reduceMotion || isSmall ? {} : { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.12 }, variants: containerVariants })} whileHover={{ y: -4 }} transition={{ duration: 0.18 }} className="bg-[rgba(255,255,255,0.02)] p-6 rounded-lg">
 					<div className="grid md:grid-cols-2 gap-6 items-center">
 						<div>
 							<h2 className="text-2xl font-semibold">Internship & Fresher Opportunities</h2>
@@ -168,7 +168,7 @@ export default function Careers() {
 
 			{/* Simple Application Form */}
 			<section className="max-w-4xl mx-auto px-6 py-12">
-				<motion.div {...(reduceMotion ? {} : { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.12 }, variants: containerVariants })}>
+				<motion.div {...(reduceMotion || isSmall ? {} : { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.12 }, variants: containerVariants })}>
 					<div className="text-center mb-4">
 					<h2 className="text-2xl font-semibold">Apply — quick form</h2>
 					<p className="text-gray-400 mt-2">Short form to send your interest — keep it simple and we’ll follow up.</p>

@@ -58,7 +58,7 @@ function Contact() {
   }, [WHATSAPP_NUMBER])
 
   return (
-    <main className="bg-[#0B0F19] text-white min-h-screen">
+    <main className="bg-[#05070F] text-white min-h-screen">
       <section className="max-w-7xl mx-auto px-6 py-12 md:py-20">
         <motion.header initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="text-left mb-8">
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">Connect with Our Team of Experts</h1>
@@ -128,17 +128,17 @@ function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-3">
                   <label className="block">
                     <span className="sr-only">Full Name</span>
-                    <input name="fullName" placeholder="Full Name" required className="w-full px-3 py-3 rounded bg-transparent border border-gray-600 focus:outline-none transition-all duration-200 ease-in-out" />
+                    <input name="fullName" placeholder="Full Name" required className="w-full px-3 py-3 rounded bg-transparent border border-gray-600 focus:outline-none transition-all duration-200 ease-in-out text-white placeholder-gray-400" />
                   </label>
 
                   <label className="block">
                     <span className="sr-only">Email Address</span>
-                    <input name="email" type="email" placeholder="Email Address" required className="w-full px-3 py-3 rounded bg-transparent border border-gray-600 focus:outline-none transition-all duration-200 ease-in-out" />
+                    <input name="email" type="email" placeholder="Email Address" required className="w-full px-3 py-3 rounded bg-transparent border border-gray-600 focus:outline-none transition-all duration-200 ease-in-out text-white placeholder-gray-400" />
                   </label>
 
                   <label className="block">
                     <span className="sr-only">Phone Number</span>
-                    <input name="phone" placeholder="Phone Number (optional, include country code)" className="w-full px-3 py-3 rounded bg-transparent border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                    <input name="phone" placeholder="Phone Number (optional, include country code)" className="w-full px-3 py-3 rounded bg-transparent border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white placeholder-gray-400" />
                     <div className="text-xs text-gray-400 mt-1">Optional — including country code helps us reply quickly.</div>
                   </label>
 
@@ -164,7 +164,7 @@ function Contact() {
 
                 <label className="block">
                   <span className="sr-only">Message</span>
-                  <textarea name="message" placeholder="Describe your project, timeline, budget, or paste a portfolio link" rows="6" className="w-full px-3 py-3 rounded bg-transparent border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                  <textarea name="message" placeholder="Describe your project, timeline, budget, or paste a portfolio link" rows="6" className="w-full px-3 py-3 rounded bg-transparent border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white placeholder-gray-400" />
                   <div className="text-xs text-gray-400 mt-1">Short summaries help us reply faster — links to designs or portfolios are welcome.</div>
                 </label>
 

@@ -8,7 +8,7 @@
 
 
 body {
-    @apply font-sans;
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 .gilda-display-regular {
@@ -27,3 +27,18 @@ body {
   --text-body: #D1D5DB;
   --text-muted: #9CA3AF;
 }
+
+/* Normalize box-sizing and provide consistent scrollbar styling */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* subtle custom scrollbar for modern browsers to reduce platform differences */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 9999px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Force consistent text rendering smoothing */
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* form controls normalization */
+input, textarea, select, button { font-family: inherit; color: inherit; }
+input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.45); }

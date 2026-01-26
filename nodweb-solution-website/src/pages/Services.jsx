@@ -174,7 +174,7 @@ export default function Services() {
   const itemMotionProps = (reduceMotion || isSmall) ? {} : { whileHover: { y: -3 }, transition: { duration: 0.12 } }
 
   return (
-  <main className="services-page bg-[#0B0F19] text-white">
+  <main className="services-page bg-[#05070F] text-white">
 
       {/* Hero / Intro */}
       <section className="max-w-6xl mx-auto px-6 py-12 md:py-20">
