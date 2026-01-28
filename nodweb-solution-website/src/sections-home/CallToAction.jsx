@@ -15,7 +15,9 @@ function CallToAction() {
           free consultation.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link className="group flex items-center gap-1 justify-center border border-blue-600 bg-blue-600 text-white px-6 py-2 rounded-lg text-md font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md active:scale-95">
+          <Link
+          to="/contact"
+           className="group flex items-center gap-1 justify-center border border-blue-600 bg-blue-600 text-white px-6 py-2 rounded-lg text-md font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md active:scale-95">
             Get Started
             <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>

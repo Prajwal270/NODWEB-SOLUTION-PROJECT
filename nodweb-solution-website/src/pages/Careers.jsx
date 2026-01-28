@@ -73,7 +73,7 @@ export default function Careers() {
 				<div className="max-w-6xl mx-auto px-6 text-center">
 					<motion.h1 initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-extrabold">Build Your Career with NodWeb Solution</motion.h1>
 					<motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gray-300 mt-4 max-w-3xl mx-auto">We value innovation, learning, and long-term growth — join a friendly, future-driven company where you’ll work on real products and level up fast.</motion.p>
-					<div className="mt-6 h-0.5 w-36 mx-auto rounded bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400 opacity-90" />
+					<div className="mt-6 h-0.5 w-36 mx-auto rounded bg-linear-to-r from-indigo-500 via-blue-500 to-cyan-400 opacity-90" />
 				</div>
 			</section>
 

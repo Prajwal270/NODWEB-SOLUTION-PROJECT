@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/nodweb_logo.webp";
 
 function Navbar() {
@@ -67,13 +67,14 @@ function Navbar() {
               Contact
             </NavLink>
           </div>
-          <button
+          <Link
+            to="/services"
             className="group hidden md:flex items-center gap-1 justify-center bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm font-medium
                    transition-all duration-300 hover:bg-blue-700 hover:shadow-md active:scale-95 hover:cursor-pointer"
           >
             Get Started
             <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden z-50">
@@ -134,13 +135,15 @@ function Navbar() {
               >
                 Contact
               </NavLink>
-              <button
+              <Link
+                to="/services"
+                onClick={() => setIsMenuOpen(false)}
                 className="group w-full flex items-center gap-1 justify-center bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm font-medium
                    transition-all duration-300 hover:bg-blue-700 hover:shadow-md active:scale-95"
               >
                 Get Started
                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}

@@ -1,21 +1,29 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function ServiceCard({ icon: Icon, title, description }) {
+function ServiceCard({ icon: Icon, title, description, slug }) {
   return (
-    <div className="group h-full flex flex-col bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 hover:border-blue-500/40 hover:shadow-blue-600/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-      
-      <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:bg-blue-500/20 transition">
-        <Icon className="text-blue-400" size={26} />
+    <Link to={`/services/${slug}`} className="h-full block">
+      <div className="group h-full flex flex-col bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 hover:border-blue-500/40 hover:shadow-blue-600/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+        
+        <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:bg-blue-500/20 transition">
+          <Icon className="text-blue-400" size={26} />
+        </div>
+
+        <h3 className="text-lg font-semibold text-white mb-2">
+          {title}
+        </h3>
+
+        <p className="text-sm text-gray-400 leading-relaxed grow">
+          {description}
+        </p>
+
+        <span className="text-blue-400 mt-4 font-medium">
+          Read More →
+        </span>
+
       </div>
-
-      <h3 className="text-lg font-semibold text-white mb-2">
-        {title}
-      </h3>
-      <p className="text-sm text-gray-400 leading-relaxed grow">
-        {description}
-      </p>
-
-    </div>
+    </Link>
   );
 }
 

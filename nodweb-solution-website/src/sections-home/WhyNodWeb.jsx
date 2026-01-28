@@ -4,6 +4,8 @@ import {
   Lightbulb,
   Layers,
   HeartHandshake,
+  Brain,
+  Cpu,
   ArrowRight,
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -26,6 +28,21 @@ function WhyNodWeb() {
       title: "Scalable Solutions",
       description: "Built to grow with your business at every stage.",
       icon: Layers,
+    },
+    {
+      title: "AI-Powered Solutions",
+      description:
+      "Smart systems using Artificial Intelligence to automate and optimize your business.",
+      icon: Brain,
+      highlight: true,
+    },
+    
+    {
+      title: "Machine Learning Systems",
+      description:
+      "Data-driven models that learn, improve, and give powerful predictions.",
+      icon: Cpu,
+      highlight: true,
     },
     {
       title: "Client-Centric Approach",
@@ -72,7 +89,7 @@ function WhyNodWeb() {
         </div>
 
         <motion.div
-          className="grid grid-cols-2 gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
