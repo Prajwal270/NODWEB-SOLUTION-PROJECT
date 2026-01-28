@@ -16,38 +16,35 @@ function ServicesOverview() {
   const services = [
     {
       title: "Web Development",
-      slug: "web-development",
-      description: "Modern, fast, and responsive websites using latest technologies.",
+      description:
+        "Modern, fast, and responsive websites using latest technologies.",
       icon: Code,
     },
     {
       title: "App Development",
-      slug: "app-development",
       description: "Android and iOS apps with smooth performance and great UI.",
       icon: Smartphone,
     },
     {
       title: "Digital Marketing",
-      slug: "digital-marketing",
-      description: "Grow your business using smart digital marketing strategies.",
+      description:
+        "Grow your business using smart digital marketing strategies.",
       icon: Megaphone,
     },
     {
       title: "UI / UX Design",
-      slug: "ui-ux-design",
       description: "Clean, modern and user-friendly interface designs.",
       icon: PenTool,
     },
     {
       title: "SEO & Branding",
-      slug: "seo-branding",
       description: "Improve your visibility and build a strong online brand.",
       icon: Search,
     },
     {
       title: "Maintenance & Support",
-      slug: "maintenance-support",
-      description: "Keep your website fast, secure, and always running smoothly.",
+      description:
+        "Keep your website fast, secure, and always running smoothly.",
       icon: Wrench,
     },
   ];

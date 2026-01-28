@@ -4,6 +4,7 @@ import {
   Mail,
   LinkedinIcon,
   Twitter,
+  X,
   Instagram,
   Facebook,
   MessageCircle,
@@ -11,8 +12,6 @@ import {
 import { Link } from "react-router-dom";
 import logo from "../assets/nodweb_logo.webp";
 import threads from "../assets/icons/threads.svg";
-import whatsapp from "../assets/icons/whatsapp.svg";
-import twitter from "../assets/icons/twitter-x.svg";
 
 const footerVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -123,18 +122,11 @@ const Footer = () => {
                 </li>
 
                 <div className="flex items-center justify-between">
-                  <a
-                    href="https://www.linkedin.com/company/nexxal-solution-pvt-ltd/"
-                    target="_blank"
-                  >
+                  <a href="#" target="_blank">
                     <LinkedinIcon className="h-10 w-10 hover:bg-gray-300/20 transition-all p-2 rounded" />
                   </a>
                   <a href="https://x.com/nodwebsolution" target="_blank">
-                  <img
-                      src={twitter}
-                      alt=""
-                      className="brightness-0 invert h-10 w-10 hover:bg-blue-700/20 transition-all p-2 rounded"
-                    />
+                    <Twitter className="h-10 w-10 hover:bg-gray-300/20 transition-all p-2 rounded" />
                   </a>
                   <a
                     href="https://www.instagram.com/nodwebsolutionpvt.ltd/"
@@ -153,11 +145,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img
-                      src={whatsapp}
-                      alt=""
-                      className="brightness-0 invert h-10 w-10 hover:bg-blue-700/20 transition-all p-2 rounded"
-                    />
+                    <MessageCircle className="h-10 w-10 hover:bg-gray-300/20 transition-all p-2 rounded" />
                   </a>
 
                   <a
@@ -184,9 +172,8 @@ const Footer = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          © {new Date().getFullYear()} NodWeb. All rights reserved.{" "}
-          <span className="mx-2">·</span> Terms <span className="mx-2">·</span>{" "}
-          Privacy
+          © 2026 NodWeb. All rights reserved. <span className="mx-2">·</span>{" "}
+          Terms <span className="mx-2">·</span> Privacy
         </motion.div>
       </div>
     </section>
