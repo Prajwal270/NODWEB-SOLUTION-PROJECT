@@ -25,6 +25,8 @@ const JOBS = [
 export default function Careers() {
 	const reduceMotion = useReducedMotion()
 	const [isSmall, setIsSmall] = useState(() => (typeof window !== 'undefined' ? window.innerWidth < 768 : false))
+	const [selectedFile, setSelectedFile] = useState(null)
+	const [fileError, setFileError] = useState('')
 
 	useEffect(() => {
 		function update() {
@@ -35,6 +37,37 @@ export default function Careers() {
 		return () => window.removeEventListener('resize', update)
 	}, [])
 
+	const handleFileChange = React.useCallback((e) => {
+		const file = e.target.files?.[0]
+		setFileError('')
+		
+		if (!file) {
+			setSelectedFile(null)
+			return
+		}
+		
+		// Validate file size (5MB = 5 * 1024 * 1024 bytes)
+		const maxSize = 5 * 1024 * 1024
+		if (file.size > maxSize) {
+			setFileError('File size must be less than 5MB')
+			e.target.value = '' // Clear the input
+			setSelectedFile(null)
+			return
+		}
+		
+		// Validate file type
+		const allowedTypes = ['.pdf', '.doc', '.docx', '.txt']
+		const fileExt = '.' + file.name.split('.').pop().toLowerCase()
+		if (!allowedTypes.includes(fileExt)) {
+			setFileError('Please upload PDF, DOC, DOCX, or TXT files only')
+			e.target.value = ''
+			setSelectedFile(null)
+			return
+		}
+		
+		setSelectedFile(file)
+	}, [])
+
 	const handleApply = React.useCallback((e) => {
 		e.preventDefault()
 		const form = e.target
@@ -42,10 +75,28 @@ export default function Careers() {
 		const email = encodeURIComponent(form.email?.value || '')
 		const role = encodeURIComponent(form.role?.value || '')
 		const message = encodeURIComponent(form.message?.value || '')
+		const resumeFile = form.resume?.files?.[0]
+		
 		// send to WhatsApp number (already configured elsewhere)
 		const WHATSAPP_NUMBER = '917841061453'
-		const text = `Name: ${decodeURIComponent(name)}\nEmail: ${decodeURIComponent(email)}\nRole: ${decodeURIComponent(role)}\n\n${decodeURIComponent(message)}`
+		let text = `Name: ${decodeURIComponent(name)}\nEmail: ${decodeURIComponent(email)}\nRole: ${decodeURIComponent(role)}`
+		
+		if (resumeFile) {
+			text += `\nResume: ${resumeFile.name} (${(resumeFile.size / 1024).toFixed(2)} KB)`
+		}
+		
+		text += `\n\n${decodeURIComponent(message)}`
+		
+		if (resumeFile) {
+			text += `\n\nNote: Please send your resume/CV to nodwebsolutionpvtltd@gmail.com with subject "Application - ${decodeURIComponent(role)}"`
+		}
+		
 		window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank')
+		
+		// Reset form and file state
+		form.reset()
+		setSelectedFile(null)
+		setFileError('')
 	}, [])
 
 	const scrollToApply = React.useCallback((roleTitle) => {
@@ -200,6 +251,30 @@ export default function Careers() {
 					<label className="block">
 						<span className="sr-only">Message</span>
 						<textarea name="message" placeholder="Short message / link to portfolio" rows="4" className="w-full px-3 py-3 rounded bg-transparent border border-gray-700" />
+					</label>
+
+					<label className="block">
+						<span className="text-sm text-gray-300 mb-2 block">Attach Resume / CV (Optional)</span>
+						<input 
+							name="resume" 
+							type="file" 
+							accept=".pdf,.doc,.docx,.txt" 
+							onChange={handleFileChange}
+							className="w-full px-3 py-3 rounded bg-transparent border border-gray-700 text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700 file:cursor-pointer"
+						/>
+						{selectedFile && (
+							<div className="text-xs text-green-400 mt-2">
+								✓ Selected: {selectedFile.name} ({(selectedFile.size / 1024).toFixed(2)} KB)
+							</div>
+						)}
+						{fileError && (
+							<div className="text-xs text-red-400 mt-2">
+								⚠ {fileError}
+							</div>
+						)}
+						<div className="text-xs text-gray-400 mt-1">
+							Accepted formats: PDF, DOC, DOCX, TXT (Max 5MB). If attached, please also email to nodwebsolutionpvtltd@gmail.com
+						</div>
 					</label>
 
 					<div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
