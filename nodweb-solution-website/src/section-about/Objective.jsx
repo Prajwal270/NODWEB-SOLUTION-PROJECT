@@ -2,7 +2,7 @@ import React from "react";
 
 function Objective() {
   return (
-    <section className="w-full bg-[#0B0F19] text-amber-100 py-16 px-4">
+    <section className="w-full bg-[#0B0F19] text-amber-100 py-16 pt-25 px-4">
       <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
           About <span className="text-blue-500">Nodweb</span>

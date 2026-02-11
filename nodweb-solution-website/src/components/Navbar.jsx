@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/nodweb_logo.webp";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Detect route
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  // Detect scroll
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (!isHome) return;
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 80);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isHome]);
 
   const menuVariants = {
     hidden: { opacity: 0, scale: 0.95, y: -10 },
@@ -32,7 +50,16 @@ function Navbar() {
    hover:after:scale-x-100`;
 
   return (
-    <nav className="bg-[#0B0F19] shadow-md sticky top-0 z-50 text-gray-300 backdrop-blur-md">
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 text-gray-300 transition-all duration-300
+      ${
+        isHome
+          ? scrolled
+            ? "bg-[#0B0F19]/95 backdrop-blur-md shadow-md"
+            : "bg-transparent"
+          : "bg-[#0B0F19] shadow-md"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
@@ -67,6 +94,7 @@ function Navbar() {
               Contact
             </NavLink>
           </div>
+
           <Link
             to="/services"
             className="group hidden md:flex items-center gap-1 justify-center bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm font-medium

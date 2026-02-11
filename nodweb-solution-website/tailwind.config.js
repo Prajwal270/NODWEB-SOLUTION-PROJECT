@@ -1,17 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: [
-      "./index.html",
-      "./src/**/*.{js,ts,jsx,tsx}",
-    ],
-    theme: {
-      extend: {
-        fontFamily: {
-          // Make Poppins the default sans font globally
-          sans: ["Poppins", "sans-serif"],
-        },
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+        pacifico: ['"Pacifico"', "cursive"],
+        gilda: ['"Gilda Display"', "serif"],
       },
     },
-    plugins: [],
-  };
-  
+  },
+  plugins: [],
+};
