@@ -9,7 +9,6 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "../assets/nodweb_logo.webp";
 import threads from "../assets/icons/threads.svg";
 import whatsapp from "../assets/icons/whatsapp.svg";
 import twitter from "../assets/icons/twitter-x.svg";
@@ -47,8 +46,8 @@ const Footer = () => {
             <a href="/">
               <div className="flex items-center gap-2">
                 <img
-                  src={logo}
-                  alt="NodWeb Logo"
+                  src="/images/logos/nodweb_favicon.png"
+                  alt="NodWeb Solution Logo - Digital Agency Nagpur"
                   className="h-10 w-10 md:h-12 md:w-12 rounded-full"
                 />
                 <div className="shrink-0 font-semibold text-xl sm:text-2xl md:text-3xl tracking-wide text-white gilda-display-regular">

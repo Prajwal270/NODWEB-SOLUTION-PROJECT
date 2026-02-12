@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
+import SEO from '../components/SEO'
 const ServiceCard = React.lazy(() => import('../components/ServiceCardpop'))
 const PerfVisual = React.lazy(() => import('../components/PerfVisual'))
 import { Code, Smartphone, Megaphone, PenTool, Search, Wrench } from 'lucide-react'
@@ -174,7 +175,14 @@ export default function Services() {
   const itemMotionProps = (reduceMotion || isSmall) ? {} : { whileHover: { y: -3 }, transition: { duration: 0.12 } }
 
   return (
-  <main className="services-page bg-[#05070F] text-white">
+  <>
+    <SEO 
+      title="Our Services - Web Development, App Development & Digital Marketing | NodWeb Solution"
+      description="Explore NodWeb Solution's comprehensive digital services: web development, mobile app development, UI/UX design, digital marketing, SEO optimization, and branding. Get expert solutions tailored for your business growth."
+      keywords="web development services, web development company, website developer, web design services, app development, app development company, mobile app development, android developer, ios developer, flutter developer, react native developer, digital marketing services, digital marketing agency, seo services, seo company, google ads, ppc agency, social media marketing, smm services, marketing agency, ecommerce development, ecommerce website, shopify developer, wordpress developer, Nagpur digital services"
+      url="/services"
+    />
+    <main className="services-page bg-[#05070F] text-white">
 
       {/* Hero / Intro */}
       <section className="max-w-6xl mx-auto px-6 py-12 md:py-20">
@@ -211,7 +219,7 @@ export default function Services() {
           </div>
 
           <motion.div className="hidden md:flex items-center justify-center" initial={{ opacity: 0, x: 80 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, ease: 'easeOut', delay: 0.18 }}>
-            <motion.img loading="lazy" src="/vecteezy_ai-generated-manager-man-present-successful-group-business_39323012.png" alt="Team" className="w-72 md:w-96 lg:w-[520px] rounded-md shadow-2xl" />
+            <motion.img loading="lazy" src="/images/team/team-photo.png" alt="NodWeb Solution team - professional web developers, app developers and digital marketing experts delivering digital solutions in Nagpur" className="w-72 md:w-96 lg:w-[520px] rounded-md shadow-2xl" />
           </motion.div>
         </div>
       </section>
@@ -313,5 +321,6 @@ export default function Services() {
       </section>
 
     </main>
+  </>
   )
 }

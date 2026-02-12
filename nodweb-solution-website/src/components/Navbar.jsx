@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../assets/nodweb_logo.webp";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,8 +38,8 @@ function Navbar() {
           <a href="/">
             <div className="flex items-center gap-1">
               <img
-                src={logo}
-                alt=""
+                src="/images/logos/nodweb_favicon.png"
+                alt="NodWeb Solution Logo"
                 className="h-8 w-8 md:h-10 md:w-10 rounded-full"
               />
               <div className="shrink-0 font-semibold text-xl sm:text-2xl md:text-32xl tracking-wide text-white gilda-display-regular">
