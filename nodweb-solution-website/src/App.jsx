@@ -10,6 +10,7 @@ const Services = React.lazy(() => import("./pages/Services"));
 const Careers = React.lazy(() => import("./pages/Careers"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const ServiceDetail = React.lazy(() => import("./components/ServiceDetail"))
+const Blog = React.lazy(()=>import("./pages/Blog"))
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="services" element={<Services />} />
+            <Route path="blog" element={<Blog />} />
             <Route path="career" element={<Careers />} />
             <Route path="contact" element={<Contact />} />
             <Route path="/services/:slug" element={<ServiceDetail />} />

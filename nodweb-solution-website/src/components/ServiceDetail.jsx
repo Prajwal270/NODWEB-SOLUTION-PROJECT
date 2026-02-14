@@ -12,7 +12,7 @@ function ServiceDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0B0F19] text-white">
+    <div className="min-h-screen pt-10 bg-[#0B0F19] text-white">
       {/* Hero Section */}
       <div className="bg-linear-to-b from-[#0B0F19] to-[#0E1424] pt-15 pb-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
