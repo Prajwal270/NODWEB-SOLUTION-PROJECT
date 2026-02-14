@@ -41,7 +41,7 @@ function Navbar() {
   };
 
   const getLinkClass = ({ isActive }) =>
-    `relative block font-semibold transition-colors duration-300
+    `relative block text-sm  font-medium transition-colors duration-300
    ${isActive ? "text-blue-500" : "text-gray-300 hover:text-white"}
    after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-blue-500
    after:w-full after:scale-x-0 after:origin-left
@@ -76,7 +76,7 @@ function Navbar() {
           </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-5">
             <NavLink to="/" className={getLinkClass}>
               Home
             </NavLink>
@@ -85,6 +85,9 @@ function Navbar() {
             </NavLink>
             <NavLink to="/services" className={getLinkClass}>
               Services
+            </NavLink>
+            <NavLink to="/blog" className={getLinkClass}>
+              Blog
             </NavLink>
             <NavLink to="/career" className={getLinkClass}>
               Career
@@ -147,6 +150,13 @@ function Navbar() {
                 className={getLinkClass}
               >
                 Services
+              </NavLink>
+              <NavLink
+                to="/blog"
+                onClick={() => setIsMenuOpen(false)}
+                className={getLinkClass}
+              >
+                Blog
               </NavLink>
               <NavLink
                 to="/career"
