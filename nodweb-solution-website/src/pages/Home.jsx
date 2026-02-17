@@ -10,6 +10,7 @@ const OurProcess = lazy(() => import("../sections-home/OurProcess"));
 const Technologies = lazy(() => import("../sections-home/Technologies"));
 const CallToAction = lazy(() => import("../sections-home/CallToAction"));
 const Branding = lazy(() => import("../sections-home/Branding"));
+const FloatingWhatsapp = lazy(()=> import("../components/FloatingWhatsapp"))
 
 function Home() {
   return (
@@ -29,6 +30,7 @@ function Home() {
         <OurProcess />
         <Technologies />
         <CallToAction />
+        <FloatingWhatsapp/>
       </Suspense>
     </>
   );

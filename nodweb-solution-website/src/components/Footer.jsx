@@ -83,6 +83,11 @@ const Footer = () => {
                     Career
                   </Link>
                 </li>
+                <li>
+                  <Link to="/blog" className="hover:text-white transition">
+                    Blogs
+                  </Link>
+                </li>
               </ul>
             </div>
 
