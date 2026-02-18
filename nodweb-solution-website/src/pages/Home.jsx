@@ -9,7 +9,6 @@ import OurProcess from "../sections-home/OurProcess";
 import Technologies from "../sections-home/Technologies";
 import CallToAction from "../sections-home/CallToAction";
 import Branding from "../sections-home/Branding";
-import FloatingWhatsapp from "../components/FloatingWhatsapp";
 
 function Home() {
   return (
@@ -29,7 +28,6 @@ function Home() {
       <OurProcess />
       <Technologies />
       <CallToAction />
-      <FloatingWhatsapp />
     </>
   );
 }

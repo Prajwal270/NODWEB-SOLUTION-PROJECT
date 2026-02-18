@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import FloatingWhatsapp from "../components/FloatingWhatsapp"
 import { Outlet } from "react-router-dom";
 
 function MainLayout() {
@@ -11,6 +12,7 @@ function MainLayout() {
         <Outlet />
       </div>
       <Footer />
+      <FloatingWhatsapp/>
     </div>
   );
 }
