@@ -11,4 +11,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  // Force Vite to pre-bundle contentful to avoid import-analysis issues
+  // (helps with ESM/exports resolution in some environments).
+  optimizeDeps: {
+    include: ["contentful"],
+  },
 });
