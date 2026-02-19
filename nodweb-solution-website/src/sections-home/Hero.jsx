@@ -16,7 +16,7 @@ function Hero() {
           animate={{ y: 0, scale: 1, opacity: 1 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-dashed border-white/40 text-sm text-gray-300 mb-8 font-medium hover:border-white transition-all">
+          <div className="hidden sm:inline-flex sm:items-center sm:gap-2 sm:px-4 py-2 rounded-full bg-white/5 border border-dashed border-white/40 text-sm text-gray-300 mb-8 font-medium hover:border-white transition-all">
             <span className="w-3 h-3 rounded-full bg-green-400 animate-pulse"></span>
             Transforming Ideas Into Reality
           </div>
