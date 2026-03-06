@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center bg-[#0B0F19]">
       <img
-        src="/images/logos/nodweb_favicon.png"
+        src="/images/logos/nodweb_favicon.webp"
         alt="NodWeb Solution Logo"
         className="h-24 w-24 sm:h-36 sm:w-36 animate-bounce mb-4 rounded-full"
       />
