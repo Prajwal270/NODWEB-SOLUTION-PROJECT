@@ -65,7 +65,7 @@ function Navbar() {
           <a href="/">
             <div className="flex items-center gap-1">
               <img
-                src="/images/logos/nodweb_favicon.png"
+                src="/images/logos/nodweb_favicon.webp"
                 alt="NodWeb Solution Logo"
                 className="h-8 w-8 md:h-10 md:w-10 rounded-full"
               />
