@@ -1,40 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
 import { ArrowLeft } from "lucide-react";
 import Loader from "../components/Loader";
+import { client } from "../contentful/client";
 
-function BlogInDetail({ blogs }) {
+function BlogInDetail() {
   const { id } = useParams();
-
   const navigate = useNavigate();
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!blogs || blogs.length === 0) {
-    return <Loader />;
-  }
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const entry = await client.getEntry(id);
+        setBlog(entry);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlog();
+  }, [id]);
 
-  const blog = blogs.find((b) => b.sys.id === id);
-
-  if (!blog) {
+  if (loading) return <Loader />;
+  if (!blog)
     return <div className="text-white text-center py-20">Blog not found</div>;
-  }
 
   const options = {
     renderNode: {
-      [BLOCKS.HEADING_2]: (node, children, index) => (
-        <h2
-          key={index}
-          className="text-xl sm:text-2xl  font-semibold mt-8 mb-4 text-blue-400"
-        >
+      [BLOCKS.HEADING_2]: (node, children) => (
+        <h2 className="text-xl sm:text-2xl font-semibold mt-8 mb-4 text-blue-400">
           {children}
         </h2>
       ),
-      [BLOCKS.PARAGRAPH]: (node, children, index) => (
-        <p
-          key={index}
-          className="text-gray-300 leading-relaxed mb-4 text-base sm:text-lg"
-        >
+      [BLOCKS.PARAGRAPH]: (node, children) => (
+        <p className="text-gray-300 leading-relaxed mb-4 text-base sm:text-lg">
           {children}
         </p>
       ),
@@ -73,7 +77,7 @@ function BlogInDetail({ blogs }) {
 
         <div className="flex justify-center mb-10">
           <img
-            src={`https:${blog.fields.coverPhoto.fields.file.url}`}
+            src={`https:${blog.fields.coverPhoto.fields.file.url}?w=1200&fm=webp&q=75&fit=fill`}
             alt={blog.fields.blogTitle}
             className="w-full max-w-3xl h-auto rounded-xl object-cover"
             loading="lazy"
