@@ -14,18 +14,27 @@ const Contact = lazy(() => import("./pages/Contact"));
 const ServiceDetail = lazy(() => import("./components/ServiceDetail"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogInDetail = lazy(() => import("./components/BlogInDetail"));
+const CityMumbai = lazy(() => import("./pages/cities/Mumbai"));
+const CityPune = lazy(() => import("./pages/cities/Pune"));
+const CityThane = lazy(() => import("./pages/cities/Thane"));
+const CityNavimumbai = lazy(() => import("./pages/cities/Navimumbai"));
+const CityNagpur = lazy(() => import("./pages/cities/Nagpur"));
 
 function App() {
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlogs = async () => {
+      setLoading(true);
       try {
         const entries = await client.getEntries({ content_type: "blog" });
         setBlogs(entries.items);
       } catch (err) {
         console.log(err);
       }
+
+      setLoading(false);
     };
 
     fetchBlogs();
@@ -79,8 +88,8 @@ function App() {
           <Route
             path="blog"
             element={
-              <LazyWrapper>
-                <Blog blogs={blogs} />
+                <LazyWrapper>
+                <Blog blogs={blogs} loading={loading} />
               </LazyWrapper>
             }
           />
@@ -89,7 +98,7 @@ function App() {
             path="blog/:id"
             element={
               <LazyWrapper>
-                <BlogInDetail blogs={blogs} />
+                <BlogInDetail blogs={blogs} loading={loading} />
               </LazyWrapper>
             }
           />
@@ -102,6 +111,13 @@ function App() {
               </LazyWrapper>
             }
           />
+
+          {/* City landing pages for Maharashtra */}
+          <Route path="mumbai" element={<LazyWrapper><CityMumbai/></LazyWrapper>} />
+          <Route path="pune" element={<LazyWrapper><CityPune/></LazyWrapper>} />
+          <Route path="thane" element={<LazyWrapper><CityThane/></LazyWrapper>} />
+          <Route path="navimumbai" element={<LazyWrapper><CityNavimumbai/></LazyWrapper>} />
+          <Route path="nagpur" element={<LazyWrapper><CityNagpur/></LazyWrapper>} />
 
         </Route>
       </Routes>

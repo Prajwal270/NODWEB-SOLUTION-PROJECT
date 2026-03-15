@@ -4,14 +4,17 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types";
 import { ArrowLeft } from "lucide-react";
 import Loader from "../components/Loader";
+import SEO from "./SEO";
 
-function BlogInDetail({ blogs }) {
+function BlogInDetail({ blogs, loading }) {
   const { id } = useParams();
 
   const navigate = useNavigate();
 
-  if (!blogs || blogs.length === 0) {
-    return <Loader />;
+  if (loading) return <Loader />;
+
+  if (!loading && (!blogs || blogs.length === 0)) {
+    return <div className="text-white text-center py-20">No blog content available</div>;
   }
 
   const blog = blogs.find((b) => b.sys.id === id);
@@ -43,6 +46,30 @@ function BlogInDetail({ blogs }) {
 
   return (
     <div className="bg-[#0B0F19] text-white pt-25 py-12 px-4 sm:px-6 md:px-12">
+      <SEO
+        title={blog.fields.blogTitle}
+        description={blog.fields.displayTitle}
+        url={`https://www.nodwebsolution.in/blog/${blog.sys.id}`}
+        image={`https:${blog.fields.coverPhoto.fields.file.url}`}
+      />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": blog.fields.blogTitle,
+          "description": blog.fields.displayTitle,
+          "image": `https:${blog.fields.coverPhoto.fields.file.url}`,
+          "author": {
+            "@type": "Person",
+            "name": blog.fields.author || "NodWeb Solution"
+          },
+          "datePublished": blog.fields.date,
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://www.nodwebsolution.in/blog/${blog.sys.id}`
+          }
+        })}
+      </script>
       <div className="max-w-4xl mx-auto">
         <button
           onClick={() => navigate(-1)}

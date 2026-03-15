@@ -3,11 +3,29 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 
+import SEO from "../components/SEO";
+
 function Blog({ blogs, loading }) {
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 6; // 6 blogs per page
 
   if (loading) return <Loader/>;
+
+  if (!loading && (!blogs || blogs.length === 0)) {
+    return (
+      <section className="w-full bg-[#0B0F19] text-amber-100 py-16 pt-25 px-4">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <SEO
+            title="Blog - NodWeb Solution | Web Development & Digital Marketing"
+            description="Read NodWeb Solution's blog for tips, case studies, and insights on web development, app development, and digital marketing."
+            url="/blog"
+          />
+          <h2 className="text-2xl text-white font-semibold mb-4">No blog posts yet</h2>
+          <p className="text-gray-400">We're working on new content — please check back soon.</p>
+        </div>
+      </section>
+    );
+  }
 
   const totalPages = Math.ceil(blogs.length / blogsPerPage);
 
@@ -30,7 +48,13 @@ function Blog({ blogs, loading }) {
   };
 
   return (
-    <section className="w-full bg-[#0B0F19] text-amber-100 py-16 pt-25 px-4">
+    <>
+      <SEO
+        title="Blog - NodWeb Solution | Web Development & Digital Marketing"
+        description="Read NodWeb Solution's blog for tips, case studies, and insights on web development, app development, and digital marketing."
+        url="/blog"
+      />
+      <section className="w-full bg-[#0B0F19] text-amber-100 py-16 pt-25 px-4">
       <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <motion.h1
           initial={{ opacity: 0, y: -8 }}
@@ -136,6 +160,7 @@ function Blog({ blogs, loading }) {
         </div>
       </div>
     </section>
+    </>
   );
 }
 
