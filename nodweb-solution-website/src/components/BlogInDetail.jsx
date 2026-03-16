@@ -5,6 +5,8 @@ import { BLOCKS } from "@contentful/rich-text-types";
 import { ArrowLeft } from "lucide-react";
 import Loader from "../components/Loader";
 import { client } from "../contentful/client";
+import SEO from "../components/SEO";
+
 
 function BlogInDetail() {
   const { id } = useParams();
@@ -47,6 +49,30 @@ function BlogInDetail() {
 
   return (
     <div className="bg-[#0B0F19] text-white pt-25 py-12 px-4 sm:px-6 md:px-12">
+      <SEO
+        title={blog.fields.blogTitle}
+        description={blog.fields.displayTitle}
+        url={`https://www.nodwebsolution.in/blog/${blog.sys.id}`}
+        image={`https:${blog.fields.coverPhoto.fields.file.url}`}
+      />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": blog.fields.blogTitle,
+          "description": blog.fields.displayTitle,
+          "image": `https:${blog.fields.coverPhoto.fields.file.url}`,
+          "author": {
+            "@type": "Person",
+            "name": blog.fields.author || "NodWeb Solution"
+          },
+          "datePublished": blog.fields.date,
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://www.nodwebsolution.in/blog/${blog.sys.id}`
+          }
+        })}
+      </script>
       <div className="max-w-4xl mx-auto">
         <button
           onClick={() => navigate(-1)}

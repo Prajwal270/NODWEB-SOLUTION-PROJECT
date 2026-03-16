@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import SEO from '../components/SEO'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Trophy, Rocket, Users, Clock, BookOpen, Heart } from 'lucide-react'
 
@@ -118,7 +119,9 @@ export default function Careers() {
 	}, [])
 
 	return (
-		<main className="bg-[#111827] text-white min-h-screen pt-25">
+		<>
+			<SEO title="Careers - Join NodWeb Solution | Jobs in Nagpur" description="Explore career opportunities at NodWeb Solution. Join our team of web developers, app developers and digital marketers. Remote-friendly and learning-focused culture." url="/career" />
+			<main className="bg-[#111827] text-white min-h-screen pt-25">
 			{/* Hero */}
 			<section className="pt-12 md:pt-20 pb-8">
 				<div className="max-w-6xl mx-auto px-6 text-center">
@@ -287,5 +290,6 @@ export default function Careers() {
 
 			<section className="py-12" />
 		</main>
+		</>
 	)
 }
