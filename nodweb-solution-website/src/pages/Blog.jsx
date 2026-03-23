@@ -98,10 +98,9 @@ function Blog() {
                     />
                     <div className="p-6 flex flex-col flex-1">
                       <h3 className="text-lg font-medium text-white mb-1 line-clamp-2">{blogTitle}</h3>
-                      <p className="text-sm text-gray-400 leading-relaxed grow line-clamp-3 font-light">{smallDescription}</p>
+                      <p className="text-xs text-gray-400 leading-relaxed grow line-clamp-3 font-light">{smallDescription}</p>
                       <div className="mt-2 text-gray-400">
-                        <p className="text-sm font-light">Author: {author}</p>
-                        <p className="text-sm font-light">
+                        <p className="text-sm font-light mt-1">
                           Published: <span className="text-gray-200">
                             {new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
                           </span>
