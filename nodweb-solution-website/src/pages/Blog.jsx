@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import { client } from "../contentful/client";
+import SEO from "../components/SEO";
+
 
 function Blog() {
   const [blogs, setBlogs] = useState([]);
@@ -26,6 +28,22 @@ function Blog() {
 
   if (loading) return <Loader />;
 
+  if (!loading && (!blogs || blogs.length === 0)) {
+    return (
+      <section className="w-full bg-[#0B0F19] text-amber-100 py-16 pt-25 px-4">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <SEO
+            title="Blog - NodWeb Solution | Web Development & Digital Marketing"
+            description="Read NodWeb Solution's blog for tips, case studies, and insights on web development, app development, and digital marketing."
+            url="/blog"
+          />
+          <h2 className="text-2xl text-white font-semibold mb-4">No blog posts yet</h2>
+          <p className="text-gray-400">We're working on new content — please check back soon.</p>
+        </div>
+      </section>
+    );
+  }
+
   const totalPages = Math.ceil(blogs.length / blogsPerPage);
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
@@ -40,7 +58,13 @@ function Blog() {
   const handlePrev = () => { if (currentPage > 1) handlePageChange(currentPage - 1); };
 
   return (
-    <section className="w-full bg-[#0B0F19] text-amber-100 py-16 pt-25 px-4">
+    <>
+      <SEO
+        title="Blog - NodWeb Solution | Web Development & Digital Marketing"
+        description="Read NodWeb Solution's blog for tips, case studies, and insights on web development, app development, and digital marketing."
+        url="/blog"
+      />
+      <section className="w-full bg-[#0B0F19] text-amber-100 py-16 pt-25 px-4">
       <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <motion.h1
           initial={{ opacity: 0, y: -8 }}
@@ -74,10 +98,9 @@ function Blog() {
                     />
                     <div className="p-6 flex flex-col flex-1">
                       <h3 className="text-lg font-medium text-white mb-1 line-clamp-2">{blogTitle}</h3>
-                      <p className="text-sm text-gray-400 leading-relaxed grow line-clamp-3 font-light">{smallDescription}</p>
+                      <p className="text-xs text-gray-400 leading-relaxed grow line-clamp-3 font-light">{smallDescription}</p>
                       <div className="mt-2 text-gray-400">
-                        <p className="text-sm font-light">Author: {author}</p>
-                        <p className="text-sm font-light">
+                        <p className="text-sm font-light mt-1">
                           Published: <span className="text-gray-200">
                             {new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
                           </span>
@@ -110,6 +133,7 @@ function Blog() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 

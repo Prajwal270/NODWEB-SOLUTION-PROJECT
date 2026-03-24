@@ -2,10 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "../components/ProjectCard";
 
-import vid1 from "../assets/videos/solar_video.mp4"
-import vid2 from "../assets/videos/cctv_project_video.mp4"
-import vid3 from "../assets/videos/construction_project.mp4"
-import own_website_img from "../assets/videos/own_website.png"
+import own_website_img from "../assets/own_website.png";
 
 function OurProjects() {
   const projects = [
@@ -13,7 +10,7 @@ function OurProjects() {
       title: "Solar Project",
       description: "Affordable rooftop solar energy systems",
       link: "https://onsunpaysolar.in/",
-      video: vid1,
+      youtubeId: "djx9HrfaUwM",
       image:
         "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80",
     },
@@ -21,20 +18,20 @@ function OurProjects() {
       title: "CCTV Project",
       description: "Advanced CCTV systems for protection",
       link: "https://www.nsdigitalsecurity.in/",
-      video: vid2,
+      youtubeId: "GE-O1cU3WyE",
       image:
         "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80",
     },
     {
       title: "Construction Website",
       description: "Reliable builders for every project",
-      link: "#",
-      video: vid3,
+      link: "https://ayush-enterprises-project-pi.vercel.app/Pages/home.html",
+      youtubeId: "NWBfSGGLHFA",
       image:
         "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
     },
     {
-      title: "Company Portfolio",
+      title: "Company Website",
       description: "Modern business website",
       link: "#",
       image: own_website_img,
