@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import { client } from "../contentful/client";
 import Loader from "./Loader";
 import SEO from "./SEO";
 import { motion } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
 
 // Hard-coded case study data duplicate (in a real app, move to a shared constant file)
 const STATIC_CASE_STUDIES = [
@@ -93,6 +94,7 @@ const STATIC_CASE_STUDIES = [
 
 const BlogInDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
     
@@ -231,7 +233,7 @@ const BlogInDetail = () => {
         </div>
 
         <div className="prose prose-invert max-w-none">
-          {documentToReactComponents((blog.fields.content || blog.fields.blogContent), options)}
+          {documentToReactComponents((blog.fields.content || blog.fields.blogContent || { nodeType: 'document', data: {}, content: [] }), options)}
         </div>
       </div>
     </div>
