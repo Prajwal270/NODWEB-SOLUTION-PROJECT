@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
-
+import { client } from "../contentful/client";
 import SEO from "../components/SEO";
 
-function Blog({ blogs, loading }) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const blogsPerPage = 6; // 6 blogs per page
 
-  if (loading) return <Loader/>;
+function Blog() {
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const blogsPerPage = 6;
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const entries = await client.getEntries({ content_type: "blog" });
+        setBlogs(entries.items);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlogs();
+  }, []);
+
+  if (loading) return <Loader />;
 
   if (!loading && (!blogs || blogs.length === 0)) {
     return (
@@ -28,8 +45,6 @@ function Blog({ blogs, loading }) {
   }
 
   const totalPages = Math.ceil(blogs.length / blogsPerPage);
-
-  // Get blogs for current page
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
@@ -39,13 +54,8 @@ function Blog({ blogs, loading }) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleNext = () => {
-    if (currentPage < totalPages) handlePageChange(currentPage + 1);
-  };
-
-  const handlePrev = () => {
-    if (currentPage > 1) handlePageChange(currentPage - 1);
-  };
+  const handleNext = () => { if (currentPage < totalPages) handlePageChange(currentPage + 1); };
+  const handlePrev = () => { if (currentPage > 1) handlePageChange(currentPage - 1); };
 
   return (
     <>
@@ -87,28 +97,16 @@ function Blog({ blogs, loading }) {
                       className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="p-6 flex flex-col flex-1">
-                      <h3 className="text-lg font-medium text-white mb-1 line-clamp-2">
-                        {blogTitle}
-                      </h3>
-                      <p className="text-sm text-gray-400 leading-relaxed grow line-clamp-3 font-light">
-                        {smallDescription}
-                      </p>
+                      <h3 className="text-lg font-medium text-white mb-1 line-clamp-2">{blogTitle}</h3>
+                      <p className="text-xs text-gray-400 leading-relaxed grow line-clamp-3 font-light">{smallDescription}</p>
                       <div className="mt-2 text-gray-400">
-                        <p className="text-sm font-light">Author: {author}</p>
-                        <p className="text-sm font-light">
-                          Published:{" "}
-                          <span className="text-gray-200">
-                            {new Date(date).toLocaleDateString("en-GB", {
-                              day: "numeric",
-                              month: "short",
-                              year: "numeric",
-                            })}
+                        <p className="text-sm font-light mt-1">
+                          Published: <span className="text-gray-200">
+                            {new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
                           </span>
                         </p>
                       </div>
-                      <span className="text-blue-400 text-sm mt-2 font-medium underline">
-                        Read More
-                      </span>
+                      <span className="text-blue-400 text-sm mt-2 font-medium underline">Read More</span>
                     </div>
                   </div>
                 </Link>
@@ -117,44 +115,19 @@ function Blog({ blogs, loading }) {
           })}
         </div>
 
-        {/* Pagination */}
         <div className="flex justify-center mt-10 items-center space-x-2">
-          <button
-            onClick={handlePrev}
-            disabled={currentPage === 1}
-            className={`px-4 py-2 rounded-md ${
-              currentPage === 1
-                ? "bg-gray-500 text-gray-200 cursor-not-allowed"
-                : "bg-white/10 text-gray-300 hover:bg-blue-500 hover:text-white transition"
-            }`}
-          >
+          <button onClick={handlePrev} disabled={currentPage === 1}
+            className={`px-4 py-2 rounded-md ${currentPage === 1 ? "bg-gray-500 text-gray-200 cursor-not-allowed" : "bg-white/10 text-gray-300 hover:bg-blue-500 hover:text-white transition"}`}>
             Prev
           </button>
-
-          {/* Only show pages 1 and 2 */}
           {Array.from({ length: Math.min(2, totalPages) }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => handlePageChange(i + 1)}
-              className={`px-4 py-2 rounded-md ${
-                currentPage === i + 1
-                  ? "bg-blue-500 text-white"
-                  : "bg-white/10 text-gray-300 hover:bg-blue-500 hover:text-white transition"
-              }`}
-            >
+            <button key={i} onClick={() => handlePageChange(i + 1)}
+              className={`px-4 py-2 rounded-md ${currentPage === i + 1 ? "bg-blue-500 text-white" : "bg-white/10 text-gray-300 hover:bg-blue-500 hover:text-white transition"}`}>
               {i + 1}
             </button>
           ))}
-
-          <button
-            onClick={handleNext}
-            disabled={currentPage === totalPages}
-            className={`px-4 py-2 rounded-md ${
-              currentPage === totalPages
-                ? "bg-gray-500 text-gray-200 cursor-not-allowed"
-                : "bg-white/10 text-gray-300 hover:bg-blue-500 hover:text-white transition"
-            }`}
-          >
+          <button onClick={handleNext} disabled={currentPage === totalPages}
+            className={`px-4 py-2 rounded-md ${currentPage === totalPages ? "bg-gray-500 text-gray-200 cursor-not-allowed" : "bg-white/10 text-gray-300 hover:bg-blue-500 hover:text-white transition"}`}>
             Next
           </button>
         </div>

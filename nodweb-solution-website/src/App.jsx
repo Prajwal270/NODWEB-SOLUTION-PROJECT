@@ -1,11 +1,10 @@
-import React, { useEffect, useState, lazy } from "react";
+import React, { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import { client } from "./contentful/client";
 import MainLayout from "./components/MainLayout";
 import ScrollToTop from "./components/ScrollToTop";
 import LazyWrapper from "./components/LazyWrapper";
 
-import Home from "./pages/Home"; // NOT lazy
+import Home from "./pages/Home";
 
 const About = lazy(() => import("./pages/About"));
 const Services = lazy(() => import("./pages/Services"));
@@ -21,32 +20,11 @@ const CityNavimumbai = lazy(() => import("./pages/cities/Navimumbai"));
 const CityNagpur = lazy(() => import("./pages/cities/Nagpur"));
 
 function App() {
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      setLoading(true);
-      try {
-        const entries = await client.getEntries({ content_type: "blog" });
-        setBlogs(entries.items);
-      } catch (err) {
-        console.log(err);
-      }
-
-      setLoading(false);
-    };
-
-    fetchBlogs();
-  }, []);
-
   return (
     <>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainLayout />}>
-
-          {/* HOME — no Suspense anywhere */}
           <Route index element={<Home />} />
 
           <Route
@@ -88,8 +66,8 @@ function App() {
           <Route
             path="blog"
             element={
-                <LazyWrapper>
-                <Blog blogs={blogs} loading={loading} />
+              <LazyWrapper>
+                <Blog />
               </LazyWrapper>
             }
           />
@@ -98,7 +76,7 @@ function App() {
             path="blog/:id"
             element={
               <LazyWrapper>
-                <BlogInDetail blogs={blogs} loading={loading} />
+                <BlogInDetail />
               </LazyWrapper>
             }
           />
@@ -111,13 +89,6 @@ function App() {
               </LazyWrapper>
             }
           />
-
-          {/* City landing pages for Maharashtra */}
-          <Route path="mumbai" element={<LazyWrapper><CityMumbai/></LazyWrapper>} />
-          <Route path="pune" element={<LazyWrapper><CityPune/></LazyWrapper>} />
-          <Route path="thane" element={<LazyWrapper><CityThane/></LazyWrapper>} />
-          <Route path="navimumbai" element={<LazyWrapper><CityNavimumbai/></LazyWrapper>} />
-          <Route path="nagpur" element={<LazyWrapper><CityNagpur/></LazyWrapper>} />
 
         </Route>
       </Routes>
