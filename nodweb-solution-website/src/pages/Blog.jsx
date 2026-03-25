@@ -11,76 +11,68 @@ const STATIC_CASE_STUDIES = [
 		sys: { id: "case-study-solar-200-percent" },
 		fields: {
 			blogTitle: "How We Built a Solar Website That Increased Leads by 200%",
-			smallDescription:
-				"A deep dive into the UX/UI overhaul and SEO strategy that transformed a local solar business into a lead-generating machine.",
+			smallDescription: "A deep dive into how we transformed a local solar business from 'invisible' to 'unignorable' using Next.js and Local SEO.",
 			author: "Kritika",
 			date: "2024-03-10",
-			content: {
-				// Minimal content structure to mimic Contentful rich text if needed, or handle separately in Detail
+			content: { // Minimal content structure 
 				nodeType: "document",
 				data: {},
 				content: [
 					{
 						nodeType: "paragraph",
+						data: {},
 						content: [
-							{
-								nodeType: "text",
-								value: "This case study highlights how we revamped a local solar provider's web presence.",
-							},
-							{
-								nodeType: "text",
-								value: " We focused on speed, clear CTAs, and local SEO, resulting in a 200% increase in qualified leads within 3 months.",
-							},
-						],
+							{ nodeType: "text", value: "Imagine running a successful offline business but hearing crickets online. The client approached us with absolutely no online presence. They didn\'t have a website, and most importantly, no SEO was integrated. They were completely invisible to high-intent buyers.", marks: [], data: {} }
+						]
 					},
-				],
+					{
+						nodeType: "paragraph",
+						data: {},
+						content: [
+							{ nodeType: "text", value: "We focused on creating a fast, user-friendly platform and integrated a comprehensive SEO strategy from the ground up. Within 3 months, they went from zero to consistent qualified leads, growing by over 200%.", marks: [], data: {} }
+						]
+					}
+				]
 			},
 			coverPhoto: {
 				fields: {
 					file: {
-						// Using a high-quality Unsplash image as placeholder
-						url: "//images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=60",
-					},
-				},
-			},
-		},
+						url: "//images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=60"
+					}
+				}
+			}
+		}
 	},
 	{
-		sys: { id: "case-study-idea-to-app" },
+		sys: { id: "instagram-vs-google-roi" },
 		fields: {
-			blogTitle: "From Idea to App: Our Client Success Story",
-			smallDescription:
-				"Tracing the journey of a fintech startup from a napkin sketch to a fully scalable mobile application with thousands of users.",
+			blogTitle: "Why Instagram Followers Aren't Enough: Turning Likes into Customers",
+			smallDescription: "You're killing it on social media, but are you making money? Discover why 70% of your customers are missing if you ignore Google.",
 			author: "Kritika",
-			date: "2024-02-28",
+			date: "2024-03-24",
 			content: {
-				nodeType: "document",
+				nodeType: 'document', // Simplified for list preview extraction if needed
 				data: {},
 				content: [
 					{
-						nodeType: "paragraph",
+						nodeType: 'paragraph',
+						data: {},
 						content: [
-							{
-								nodeType: "text",
-								value: "Starting with a raw concept, we prototyped, designed, and developed a robust mobile application.",
-							},
-							{
-								nodeType: "text",
-								value: " This journey shows how agile methodology and user-centric design led to a successful product launch.",
-							},
-						],
-					},
-				],
+							{ nodeType: 'text', value: 'You\'re already doing great on Instagram. Your reels are getting views, your follower count is ticking up. But are you getting enough paying customers from it? Or just likes?', marks: [], data: {} }
+						]
+					}
+				]
 			},
 			coverPhoto: {
 				fields: {
 					file: {
-						url: "//images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60",
-					},
-				},
-			},
-		},
-	},
+						// App/Data analytics dashboard image used here (or new business one)
+						url: "//images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&auto=format&fit=crop&q=60"
+					}
+				}
+			}
+		}
+	}
 ];
 
 function Blog({ blogs, loading }) {
@@ -182,7 +174,7 @@ function Blog({ blogs, loading }) {
               // If static Unsplash URL, it already has params usually, or we leave it.
 
 							return (
-								<div key={item.sys.id}>
+								<div key={item.sys.id} className="h-full">
 									<Link to={`/blog/${item.sys.id}`} className="block group h-full">
 										<div className="h-full flex flex-col bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl overflow-hidden hover:border-blue-500/40 hover:shadow-blue-600/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
 											<img
@@ -214,7 +206,7 @@ function Blog({ blogs, loading }) {
 														</span>
 													</p>
 												</div>
-												<span className="text-blue-400 text-sm mt-2 font-medium underline">
+												<span className="text-blue-400 text-sm mt-4 font-medium underline inline-block group-hover:text-blue-300 transition-colors">
 													Read More
 												</span>
 											</div>

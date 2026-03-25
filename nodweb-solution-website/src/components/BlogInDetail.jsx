@@ -14,7 +14,7 @@ const STATIC_CASE_STUDIES = [
     sys: { id: "case-study-solar-200-percent" },
     fields: {
       blogTitle: "How We Built a Solar Website That Increased Leads by 200%",
-      smallDescription: "A deep dive into the UX/UI overhaul and SEO strategy that transformed a local solar business into a lead-generating machine.",
+      smallDescription: "A deep dive into how we transformed a local solar business from 'invisible' to 'unignorable' using Next.js and Local SEO.",
       author: "Kritika",
       date: "2024-03-10",
       content: { 
@@ -23,20 +23,58 @@ const STATIC_CASE_STUDIES = [
         content: [
            {
              nodeType: 'paragraph',
+             data: {},
              content: [
-                { nodeType: 'text', value: 'The Client Challenge: A local solar installation company approached us with a site that was 5 years old. It was slow, not mobile-friendly, and generated near-zero leads.' }
+                { nodeType: 'text', value: 'Imagine running a successful offline business but hearing crickets online. That was the reality for our client, a local solar installation company. They were relying entirely on word-of-mouth while their competitors were scooping up leads from Google every single day.', marks: [], data: {} }
+             ]
+           },
+           {
+             nodeType: 'heading-2',
+             data: {},
+             content: [
+                 { nodeType: 'text', value: 'The Problem: Invisible to High-Intent Buyers', marks: [], data: {} }
              ]
            },
            {
              nodeType: 'paragraph',
+             data: {},
              content: [
-                { nodeType: 'text', value: 'Our Solution: We rebuilt the site on Next.js 14 for speed, optimized all images, and implemented a strict local SEO strategy targeting high-intent keywords like "solar panel installation near me". We also added clear, persistent CTAs for quote requests.' }
+                { nodeType: 'text', value: 'They didn\'t just have a "bad" website—they had NO website. In 2024, if you don\'t exist on Google, you don\'t exist for 70% of your market. They were completely invisible to high-intent buyers actively searching for "solar panels near me" or "best solar installers". They were leaving thousands of dollars on the table.', marks: [], data: {} }
+             ]
+           },
+           {
+             nodeType: 'heading-2',
+             data: {},
+             content: [
+                 { nodeType: 'text', value: 'Our Strategy: Building a Lead Engine', marks: [], data: {} }
              ]
            },
            {
              nodeType: 'paragraph',
+             data: {},
              content: [
-                { nodeType: 'text', value: 'The Results: Within 3 months, organic traffic grew by 150% and form submissions (leads) increased by over 200%.' }
+                { nodeType: 'text', value: 'We didn\'t want to just build a digital brochure. We wanted a sales machine. We chose Next.js for lightning-fast load times—because Google loves speed—and built a custom design that established immediate trust. But the real magic was under the hood.', marks: [], data: {} }
+             ]
+           },
+           {
+             nodeType: 'paragraph',
+             data: {},
+             content: [
+                { nodeType: 'text', value: 'We implemented a hyper-local SEO strategy. We targeted specific neighborhoods, optimized for "near me" queries, and created dedicated service pages. We also set up clear, high-contrast Call-to-Actions (CTAs) that guided visitors to "Get a Quote" in under 30 seconds.', marks: [], data: {} }
+             ]
+           },
+           {
+             nodeType: 'heading-2',
+             data: {},
+             content: [
+                 { nodeType: 'text', value: 'The Results: 200% Growth', marks: [], data: {} }
+             ]
+           },
+           {
+             nodeType: 'paragraph',
+             data: {},
+             content: [
+                { nodeType: 'text', value: 'The transformation was night and day. Within 3 months of launching, they went from zero online leads to a consistent stream of 20+ qualified inquiries per month—a 200% increase compared to their best offline referral months. They are now ranking #1 in their district and expanding their team to handle the demand.', marks: [], data: {} }
              ]
            }
         ]
@@ -51,40 +89,86 @@ const STATIC_CASE_STUDIES = [
     }
   },
   {
-    sys: { id: "case-study-idea-to-app" },
+    sys: { id: "instagram-vs-google-roi" },
     fields: {
-      blogTitle: "From Idea to App: Our Client Success Story",
-      smallDescription: "Tracing the journey of a fintech startup from a napkin sketch to a fully scalable mobile application with thousands of users.",
+      blogTitle: "Why Instagram Followers Aren't Enough: Turning Likes into Customers",
+      smallDescription: "You're killing it on social media, but are you making money? Discover why 70% of your customers are missing if you ignore Google.",
       author: "Kritika",
-      date: "2024-02-28",
+      date: "2024-03-24",
       content: {
         nodeType: 'document',
         data: {},
         content: [
            {
              nodeType: 'paragraph',
+             data: {},
              content: [
-                 { nodeType: 'text', value: 'Inception: The client had a brilliant idea for micro-finance management but no technical co-founder. They needed a partner to turn requirements into a working prototype quickly.' }
+                 { nodeType: 'text', value: 'You\'re already doing great on Instagram. Your reels are getting views, your follower count is ticking up, and the comments are flowing. But ask yourself this: Are you getting enough paying customers from it? Or just likes?', marks: [], data: {} }
+             ]
+           },
+           {
+             nodeType: 'heading-2',
+             data: {},
+             content: [
+                 { nodeType: 'text', value: 'The Hard Truth: Vanity Metrics vs. Real ROI', marks: [], data: {} }
              ]
            },
            {
              nodeType: 'paragraph',
+             data: {},
              content: [
-                 { nodeType: 'text', value: 'Execution: Using React Native (Expo), we sprinted through a 4-week MVP phase. This allowed early user testing. We iterated on feedback rapidly, refining both the UI and the backend logic.' }
+                 { nodeType: 'text', value: 'Social media is amazing for brand awareness, but it is "interruptive" marketing. People aren\'t scrolling Instagram to buy your service; they\'re there to be entertained. Google, on the other hand, is "intent" marketing. When someone types "best digital marketing agency" or "buy ergonomic chair", they are holding their credit card, ready to buy.', marks: [], data: {} }
+             ]
+           },
+           {
+             nodeType: 'heading-2',
+             data: {},
+             content: [
+                 { nodeType: 'text', value: 'The Opportunity Cost', marks: [], data: {} }
              ]
            },
            {
             nodeType: 'paragraph',
+            data: {},
             content: [
-                { nodeType: 'text', value: 'Outcome: The app launched on both stores seamlessly. It now supports thousands of daily active users with 99.9% uptime.' }
+                { nodeType: 'text', value: 'Most businesses miss out on 60-70% of potential customers simply because they rely 100% on social media. They are invisible to the customers who are actively searching for a solution right now. If you aren\'t visible beyond social media, you are handing money directly to your competitors.', marks: [], data: {} }
             ]
+           },
+           {
+             nodeType: 'heading-2',
+             data: {},
+             content: [
+                 { nodeType: 'text', value: 'The NodWeb Solution', marks: [], data: {} }
+             ]
+           },
+           {
+            nodeType: 'paragraph',
+            data: {},
+            content: [
+                { nodeType: 'text', value: 'We bridge that gap. We don\'t just give you a website; we give you a 24/7 salesperson. Our holistic approach combines high-performance Website Development, aggressive SEO for Google Ranking, and targeted Paid Ads (Meta & Google) to capture demand, not just generate noise.', marks: [], data: {} }
+            ]
+           },
+           {
+            nodeType: 'paragraph',
+            data: {},
+            content: [
+                { nodeType: 'text', value: 'Your Instagram brings followers. We bring you CUSTOMERS. Don\'t leave money on the table. If you want to turn those likes into signed contracts, you need a presence where the intent is highest.', marks: [{type: 'bold'}], data: {} }
+            ]
+           },
+           {
+             nodeType: 'paragraph',
+             data: {},
+             content: [
+                 { nodeType: 'text', value: 'Want a FREE audit of your online presence? Contact us today and let\'s build your empire on solid ground.', marks: [{type: 'italic'}], data: {} }
+             ]
            }
         ]
       },
       coverPhoto: {
          fields: {
           file: {
-            url: "//images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60"
+             // Business/Growth metaphor image
+            url: "//images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&auto=format&fit=crop&q=60"
           }
         }
       }
