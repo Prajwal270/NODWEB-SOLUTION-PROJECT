@@ -1,27 +1,150 @@
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS } from "@contentful/rich-text-types";
-import { ArrowLeft } from "lucide-react";
-import Loader from "../components/Loader";
+import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
+import { client } from "../contentful/client";
+import Loader from "./Loader";
 import SEO from "./SEO";
+import { motion } from "framer-motion";
 
-function BlogInDetail({ blogs, loading }) {
+// Hard-coded case study data duplicate (in a real app, move to a shared constant file)
+const STATIC_CASE_STUDIES = [
+  {
+    sys: { id: "case-study-solar-200-percent" },
+    fields: {
+      blogTitle: "How We Built a Solar Website That Increased Leads by 200%",
+      smallDescription: "A deep dive into the UX/UI overhaul and SEO strategy that transformed a local solar business into a lead-generating machine.",
+      author: "Kritika",
+      date: "2024-03-10",
+      content: { 
+        nodeType: 'document',
+        data: {},
+        content: [
+           {
+             nodeType: 'paragraph',
+             content: [
+                { nodeType: 'text', value: 'The Client Challenge: A local solar installation company approached us with a site that was 5 years old. It was slow, not mobile-friendly, and generated near-zero leads.' }
+             ]
+           },
+           {
+             nodeType: 'paragraph',
+             content: [
+                { nodeType: 'text', value: 'Our Solution: We rebuilt the site on Next.js 14 for speed, optimized all images, and implemented a strict local SEO strategy targeting high-intent keywords like "solar panel installation near me". We also added clear, persistent CTAs for quote requests.' }
+             ]
+           },
+           {
+             nodeType: 'paragraph',
+             content: [
+                { nodeType: 'text', value: 'The Results: Within 3 months, organic traffic grew by 150% and form submissions (leads) increased by over 200%.' }
+             ]
+           }
+        ]
+      },
+      coverPhoto: {
+        fields: {
+          file: {
+            url: "//images.unsplash.com/photo-1508514177221-188b1cf2f26f?w=800&auto=format&fit=crop&q=60"
+          }
+        }
+      }
+    }
+  },
+  {
+    sys: { id: "case-study-idea-to-app" },
+    fields: {
+      blogTitle: "From Idea to App: Our Client Success Story",
+      smallDescription: "Tracing the journey of a fintech startup from a napkin sketch to a fully scalable mobile application with thousands of users.",
+      author: "Kritika",
+      date: "2024-02-28",
+      content: {
+        nodeType: 'document',
+        data: {},
+        content: [
+           {
+             nodeType: 'paragraph',
+             content: [
+                 { nodeType: 'text', value: 'Inception: The client had a brilliant idea for micro-finance management but no technical co-founder. They needed a partner to turn requirements into a working prototype quickly.' }
+             ]
+           },
+           {
+             nodeType: 'paragraph',
+             content: [
+                 { nodeType: 'text', value: 'Execution: Using React Native (Expo), we sprinted through a 4-week MVP phase. This allowed early user testing. We iterated on feedback rapidly, refining both the UI and the backend logic.' }
+             ]
+           },
+           {
+            nodeType: 'paragraph',
+            content: [
+                { nodeType: 'text', value: 'Outcome: The app launched on both stores seamlessly. It now supports thousands of daily active users with 99.9% uptime.' }
+            ]
+           }
+        ]
+      },
+      coverPhoto: {
+         fields: {
+          file: {
+            url: "//images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&auto=format&fit=crop&q=60"
+          }
+        }
+      }
+    }
+  }
+];
+
+const BlogInDetail = () => {
   const { id } = useParams();
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+    
+  useEffect(() => {
+    // Check if it's a static case study first
+    const staticStudy = STATIC_CASE_STUDIES.find(b => b.sys.id === id);
+    if (staticStudy) {
+      setBlog(staticStudy);
+      setLoading(false);
+      return;
+    }
 
-  const navigate = useNavigate();
+    const fetchBlog = async () => {
+      try {
+        const entry = await client.getEntry(id);
+        setBlog(entry);
+      } catch (error) {
+        console.error("Error fetching blog post:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlog();
+  }, [id]);
 
   if (loading) return <Loader />;
 
-  if (!loading && (!blogs || blogs.length === 0)) {
-    return <div className="text-white text-center py-20">No blog content available</div>;
+  if (!loading && (!blog || !blog.fields)) {
+    return (
+      <div className="bg-[#0B0F19] min-h-screen text-amber-100 py-16 pt-25 px-4 flex items-center justify-center">
+        <p className="text-xl">Blog post not found.</p>
+      </div>
+    );
   }
 
-  const blog = blogs.find((b) => b.sys.id === id);
-
-  if (!blog) {
-    return <div className="text-white text-center py-20">Blog not found</div>;
-  }
+  // Helper to safely get image URL
+  const getSafeImageUrl = (url) => {
+    if (!url) return "";
+    let safeUrl = url;
+    if (url.startsWith("//")) {
+      safeUrl = `https:${url}`;
+    }
+    // Only append Contentful params if it's a Contentful URL
+    if (safeUrl.includes('ctfassets.net')) {
+        return safeUrl; // Usually we might want ?w=... here too but keeping it simple for detail view to avoid double params
+    }
+    return safeUrl;
+  };
+  
+  const coverUrl = blog.fields.coverPhoto?.fields?.file?.url;
+  const safeCoverUrl = getSafeImageUrl(coverUrl);
 
   const options = {
     renderNode: {
@@ -48,17 +171,17 @@ function BlogInDetail({ blogs, loading }) {
     <div className="bg-[#0B0F19] text-white pt-25 py-12 px-4 sm:px-6 md:px-12">
       <SEO
         title={blog.fields.blogTitle}
-        description={blog.fields.displayTitle}
+        description={blog.fields.smallDescription || blog.fields.displayTitle}
         url={`https://www.nodwebsolution.in/blog/${blog.sys.id}`}
-        image={`https:${blog.fields.coverPhoto.fields.file.url}`}
+        image={safeCoverUrl}
       />
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
           "headline": blog.fields.blogTitle,
-          "description": blog.fields.displayTitle,
-          "image": `https:${blog.fields.coverPhoto.fields.file.url}`,
+          "description": blog.fields.smallDescription || "",
+          "image": safeCoverUrl,
           "author": {
             "@type": "Person",
             "name": blog.fields.author || "NodWeb Solution"
@@ -100,7 +223,7 @@ function BlogInDetail({ blogs, loading }) {
 
         <div className="flex justify-center mb-10">
           <img
-            src={`https:${blog.fields.coverPhoto.fields.file.url}`}
+            src={safeCoverUrl}
             alt={blog.fields.blogTitle}
             className="w-full max-w-3xl h-auto rounded-xl object-cover"
             loading="lazy"
@@ -108,7 +231,7 @@ function BlogInDetail({ blogs, loading }) {
         </div>
 
         <div className="prose prose-invert max-w-none">
-          {documentToReactComponents(blog.fields.blogContent, options)}
+          {documentToReactComponents((blog.fields.content || blog.fields.blogContent), options)}
         </div>
       </div>
     </div>
