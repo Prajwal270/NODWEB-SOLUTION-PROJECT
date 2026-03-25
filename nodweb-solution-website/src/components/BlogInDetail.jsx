@@ -43,7 +43,7 @@ const STATIC_CASE_STUDIES = [
       coverPhoto: {
         fields: {
           file: {
-            url: "//images.unsplash.com/photo-1508514177221-188b1cf2f26f?w=800&auto=format&fit=crop&q=60"
+            url: "//images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=60"
           }
         }
       }
@@ -83,7 +83,7 @@ const STATIC_CASE_STUDIES = [
       coverPhoto: {
          fields: {
           file: {
-            url: "//images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&auto=format&fit=crop&q=60"
+            url: "//images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60"
           }
         }
       }
